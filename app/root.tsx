@@ -18,6 +18,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></link>
+        <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
+        <link rel="apple-touch-icon" href="/static/images/favicon.png" />
       </head>
       <body>
         {children}

