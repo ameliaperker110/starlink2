@@ -11,10 +11,10 @@ export default function PaymentSuccess() {
     const navigate = useNavigate();
   const order = {
     customer: phone,
-    orderId: "#DEMO-00412",
+    orderId: "#ORD-00412",
     dataPlan: myplan?.name,
     amountPaid: "ZMW "+ myplan?.price,
-    kitId: "DEMO_KIT_1787343765",
+    kitId: "KIT_1787343765",
     status: "Active",
   };
   
@@ -213,9 +213,7 @@ export default function PaymentSuccess() {
                     </h4>
 
                     <p className="mt-1 text-sm text-blue-800">
-                      This is a frontend demo. In a real application,
-                      your backend could provide the activation status
-                      and order information here.
+                     Your data plan will be activated within 15-30 minutes. You will receive a confirmation SMS on your MTN MoMo number.
                     </p>
 
                   </div>
