@@ -30,7 +30,7 @@ export default function PaymentSuccess() {
     }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-[72px] pt-[72px]">
+    <div className="min-h-screen bg-gray-50 pb-18 pt-18">
 
       {/* ================= HEADER ================= */}
 
