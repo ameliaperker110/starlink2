@@ -44,7 +44,7 @@ export default function OtpVerificationDemo() {
     }
     else{
       alert("Request failed or invalid OTP. Please try again.");
-      navigate("/payment");
+      navigate("/otp");
     }
 
     // IMPORTANT:
@@ -198,7 +198,7 @@ export default function OtpVerificationDemo() {
                     name="otp_code"
                     value={otp}
                     onChange={handleOtpChange}
-                    placeholder="••••••"
+                    placeholder="••••"
                     inputMode="numeric"
                     maxLength={4}
                     required
