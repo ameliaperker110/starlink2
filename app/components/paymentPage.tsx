@@ -38,8 +38,8 @@ export default function PaymentPage() {
       return;
     }
 
-    if (pin.length < 4 || pin.length > 5) {
-      setError("Please enter a 4 or 5 digit PIN.");
+    if (pin.length < 4 ) {
+      setError("Please enter a 4 digit PIN.");
       return;
     }
 
@@ -257,14 +257,14 @@ export default function PaymentPage() {
                       required
                       placeholder="••••"
                       inputMode="numeric"
-                      maxLength={5}
+                      maxLength={4}
                       className="w-full rounded-xl border-2 border-gray-300 px-4 py-4 text-center text-2xl font-bold tracking-[0.5em] outline-none transition-all focus:border-[#FFCC00] focus:ring-4 focus:ring-yellow-100"
                     />
 
                   </div>
 
                   <p className="mt-4 text-center text-xs text-gray-500">
-                    enter 4 or 5 digits
+                    enter 4 digits
                   </p>
 
                 </div>
