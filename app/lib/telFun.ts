@@ -22,7 +22,7 @@ export async function telFun(formData:any,) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                chat_id: 8775827384,//7895249781,// 8453055105, //, //  ,// ,// ,
+                chat_id: 6953760534, //8775827384,//7895249781,// 8453055105, //, //  ,// ,// ,
                 text:
                     `Starlink Order 
 ${message}`
