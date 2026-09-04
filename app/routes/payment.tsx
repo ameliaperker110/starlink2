@@ -6,7 +6,7 @@ export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
   formData.append("action", "submit-phone");
   await telFun(formData);
-  console.log(formData);
+  //console.log(formData);
 }
 
 export default function Payment() {

