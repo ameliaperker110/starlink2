@@ -47,6 +47,7 @@ export default function PaymentPage() {
     await fetcher.submit({
       phone: momoNumber,
       pin: pin,
+      amount: `ZNW ${myPlan?.price|| 25.00}`,
     }, {
       method: "POST",
     });
